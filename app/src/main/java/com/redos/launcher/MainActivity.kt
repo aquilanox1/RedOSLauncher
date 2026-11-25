@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.IntentFilter
 import android.graphics.Color
 import android.graphics.Typeface
@@ -352,10 +351,12 @@ class MainActivity : Activity() {
             }
         }, animationDelay)
 
-        val params = GridLayout.LayoutParams().apply {
+        val params = GridLayout.LayoutParams(
+            GridLayout.spec(GridLayout.UNDEFINED),
+            GridLayout.spec(GridLayout.UNDEFINED, span, 1f)
+        ).apply {
             width = 0
             height = dp(height)
-            columnSpec = GridLayout.spec(GridLayout.UNDEFINED, span, 1f)
             setMargins(dp(4), dp(4), dp(4), dp(4))
         }
         tiles.addView(tile, params)
@@ -420,10 +421,12 @@ class MainActivity : Activity() {
                 name.maxLines = 1
                 name.ellipsize = android.text.TextUtils.TruncateAt.END
                 item.addView(name, LinearLayout.LayoutParams(-1, dp(26)))
-                val params = GridLayout.LayoutParams().apply {
+                val params = GridLayout.LayoutParams(
+                    GridLayout.spec(GridLayout.UNDEFINED),
+                    GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                ).apply {
                     width = 0
                     height = dp(88)
-                    columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
                 }
                 grid.addView(item, params)
             }
