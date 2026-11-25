@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
@@ -355,8 +356,8 @@ class MainActivity : Activity() {
             GridLayout.spec(GridLayout.UNDEFINED),
             GridLayout.spec(GridLayout.UNDEFINED, span, 1f)
         ).apply {
-            width = 0
-            height = dp(height)
+            this.width = 0
+            this.height = dp(height)
             setMargins(dp(4), dp(4), dp(4), dp(4))
         }
         tiles.addView(tile, params)
